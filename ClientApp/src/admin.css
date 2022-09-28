@@ -1,0 +1,30 @@
+﻿#dashboard_relic_tag_container, #dashboard_tag_container, #dashboard_relic_container, #dashboard_relic_description_container {
+    display: grid;
+    grid-gap: 0.5rem;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#dashboard_relic_container {
+    grid-template-columns: repeat(7, 1fr);
+}
+
+#dashboard_relic_tag_container {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+#dashboard_tag_container {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+#dashboard_relic_description_container {
+    
+}
+
+h2 {
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient( to right, black, rgba(0, 0, 0, 0) ) 0 1 100%;
+    padding-bottom: 10px;
+}
+

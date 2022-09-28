@@ -1,0 +1,339 @@
+a {
+  color: #0366d6;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    background-color: rgb(40, 55, 59);
+    color: rgb(255, 247, 222);
+    font-family: rubik;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+header {
+    height: 140px;
+    background: url("img/site_header.jpg") no-repeat;
+    background-size: cover;
+}
+
+header::before {
+    background-image: linear-gradient(rgba(40, 55, 59, 0) 25%, rgb(40, 55, 59));
+    content: "";
+    display: block;
+    height: 140px;
+    position: absolute;
+    width: 100%;
+}
+
+h2 {
+    border-image: linear-gradient(to right, white, rgba(0, 0, 0, 0) ) 0 1 100%;
+    margin-top: 20px;
+}
+
+#title {
+    padding-top: 20px;
+    padding-left: 25px;
+    font-size: 2rem;
+    color: rgb(255, 208, 0);
+}
+
+#title_wrapper {
+    background: none !important;
+    padding: 0px !important;
+    top: 20%;
+    position: relative;
+    display: flex;
+}
+
+#title_logo {
+    height: 100px;
+    margin-left: 10px;
+}
+
+#github_rep {
+    background-color: transparent;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    padding: 20px;
+}
+
+#github_rep a, #github_rep a:hover  {
+    color: rgb(255, 247, 222)
+}
+
+.container {
+    background-color: rgb(38, 33, 33);
+    padding: 25px;
+}
+
+code {
+    color: #E01A76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.relics-container {
+    display: grid;
+    grid-gap: 0.7rem;
+    grid-template-columns: repeat(auto-fit, 80px);
+}
+
+.relic, .relic img {
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.relic img {
+    object-fit: contain;
+    position: relative;
+}
+.relic img:focus {
+     animation: nudge 0.4s linear;
+}
+
+.relic img:active {
+    animation: none;
+}
+.filters {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.filters select {
+    max-width: 175px;
+    min-width: 100px;
+    width: 15%;
+    margin: 0 0 0 auto;
+}
+
+#tagSearchBox {
+    width: fit-content;
+    position: relative;
+}
+
+#filteringTags {
+    width: 50%;
+    margin-top: 10px;
+}
+
+#filteringTags div {
+    padding: 3px;
+    display: inline-block;
+    border: 2px outset white;
+    border-radius: 14px;
+    margin-right: 5px;
+}
+
+#filteringTags div span {
+    cursor:pointer; 
+}
+
+#autoComplete {
+    display: none;
+    width: 100%;
+    position: absolute;
+    max-height: 135px;
+    left: 0;
+    background-color: white;
+    z-index: 15;
+    border: 1px solid #d0d0d0;
+    margin-top: -2px;
+    margin-right: -1px;
+    overflow: auto;
+}
+
+.autoCompleteElement {
+    cursor: pointer;
+    padding: 4px .681818em;
+    margin: 0 auto;
+    color: black;
+}
+
+.autoCompleteElement:hover {
+    background-color: darkgray;
+}
+
+@keyframes nudge {
+    0% {
+        transform: rotate(-7deg);
+    }
+
+    33% {
+        transform: rotate(7deg);
+    }
+
+    66% {
+        transform: rotate(-7deg);
+    }
+}
+
+#relic-description-box {
+    position: fixed;
+    grid-template-columns: auto 1fr;
+    width: 320px;
+    border: 5px outset #556b71;
+    border-radius: 6px;
+    z-index: 600000;
+    background-color: #222a2b;
+    display: grid;
+    padding: 5px;
+    color: #fff7de;
+    /*font-family: kreon;*/
+}
+
+#relic-description-box .relic {
+    max-width: 80px;
+    max-height: 80px;
+}
+
+#relic-description-box .relic img {
+    z-index: -1;
+    position: relative;
+}
+
+#relicdescbox_name_and_tier {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#relicdescbox_name {
+    font-size: 110%;
+    color: #efc851;
+    letter-spacing: 2px;
+}
+
+#relicdescbox_tier {
+    font-size: 85%;
+    margin-top: 10px;
+}
+
+.Common, .Starter {
+    color: dimgray; 
+}
+
+.Uncommon {
+    color: rgb(135, 206, 235);
+}
+
+.Rare {
+    color: gold;
+}
+
+.Boss {
+    color: #ff6563;
+}
+
+.Shop {
+    color: rgb(144, 238, 144);
+}
+
+.Event {
+    color: rgb(238, 130, 238);
+}
+
+.Special {
+    color: #89a2a3;
+}
+
+span.tierTag.Ironclad {
+    color: #ff6563 !important;
+}
+
+span.tierTag.Silent {
+    color: #7fff00 !important;
+}
+
+span.tierTag.Defect {
+    color: #87ceeb !important;
+}
+
+span.tierTag.Watcher {
+    color: #ec81ec !important;
+}
+
+span.tierTag.whiteDash {
+    color: white !important;
+}
+
+#relicdescbox_text_and_flavor {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin: 5px 5px 5px 8px;
+    font-size: 85%;
+    white-space: pre-line;
+}
+
+#relicdescbox_text {
+}
+
+#relicdescbox_flavor {
+    font-style: italic;
+    margin-top: 3px;
+}
+
+#relicsListViewContainer {
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: 80px 1fr 1fr 3fr;
+}
+
+#relicsListViewContainer div {
+    align-self: center;
+}
+
+span.gold {
+    color: #efc851;
+}
+
+span.red {
+    color: #ff6563;
+}
+
+span.green {
+    color: #7fff00;
+}
+
+span.blue {
+    color: #87ceeb;
+}
+
+span.purple {
+    color: #ec81ec;
+}
+
+#login_container {
+    margin: auto;
+    width: 500px;
+    text-align: center;
+}
+
+#login_container input {
+    margin: auto;
+    display: block;
+    width: 200px;
+    margin-top: 10px;
+}
+
+#login_container h2 {
+    border-style: none;
+}
+
+#login_button{
+    margin-top: 10px;
+}

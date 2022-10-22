@@ -5,10 +5,12 @@ import RelicsGridView from '../components/RelicsGridView'
 import RelicsByCategoryView from '../components/RelicsByCategoryView'
 import RelicsListView from '../components/RelicsListView'
 import RelicsFilters from '../components/RelicsFilters'
+import LoadingSpinner from '../components/LoadingSpinner'
 import RelicsAPI from "../services/RelicsAPI"
 
 
 const RelicsPage = (props) => {
+    const [isLoading, setIsLoading] = useState(true);
     const [relics, setRelics] = useState([]);
     const [languages, setLanguages] = useState([]);
     const [tags, setTags] = useState([]);
@@ -24,6 +26,7 @@ const RelicsPage = (props) => {
         parseRelicsDescriptions(relicsData);
         setRelics(relicsData);
         setFilteredRelics(relicsData);
+        preloadRelicIcons(relicsData);
     }
 
     const getLanguages = async () => {
@@ -51,6 +54,26 @@ const RelicsPage = (props) => {
         return toRender;
     }
 
+    const preloadRelicIcons = (relics) => {
+        Promise.all(relics.map((relic) => {
+            preloadImage(relic.image);
+        })
+        ).then(() => setTimeout(() => { setIsLoading(false) }, 1500));
+    }
+
+    const preloadImage = (src) => {
+        return new Promise((resolve, reject) => {
+            const img = document.createElement("img");
+            img.onload = () => {
+                resolve(img);
+            }
+            img.onerror = img.onabort = () => {
+                reject(src);
+            }
+            img.src = `img/relics_icons/${src}`;
+        })
+    }
+
     useEffect(() => {
         getRelics();
         if (!languages.length) {
@@ -61,10 +84,19 @@ const RelicsPage = (props) => {
     
     return (
         <>
-            <RelicsFilters relics={relics} tags={tags} languages={languages} setRelicsView={setRelicsView} relicsDescriptionsLanguage={relicsDescriptionsLanguage}
-                filteredRelics={filteredRelics} setFilteredRelics={setFilteredRelics} setRelicsDescriptionsLanguage={setRelicsDescriptionsLanguage} />
-                {descBoxHtml()}
-                {renderView()}
+
+            {isLoading ? <LoadingSpinner /> : 
+                <>
+                    <RelicsFilters relics={relics} tags={tags} languages={languages} setRelicsView={setRelicsView} relicsDescriptionsLanguage={relicsDescriptionsLanguage}
+                    filteredRelics={filteredRelics} setFilteredRelics={setFilteredRelics} setRelicsDescriptionsLanguage={setRelicsDescriptionsLanguage} /> 
+                    { renderView() } 
+                    { descBoxHtml() }
+                </>
+            }
+            
+            
+            
+            
         </>
     );
 }

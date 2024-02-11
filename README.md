@@ -1,7 +1,7 @@
 # STSRelics_Viewer
+Slay The Spire's relics viewer with tags-based filters.
+Full database available in db.sql.
 
-https://stsbuilder20220912191505.azurewebsites.net/
-
-Website built with .NET Core & ReactJS.
+Project built with .NET Core & ReactJS.
 
 Based on the game Slay The Spire.

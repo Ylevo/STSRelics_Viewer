@@ -26,16 +26,20 @@ const RelicsFilters = ({
         else {
             input = input.toLowerCase();
             let foundTags = tags.filter((tag) => {
-                return tag.tagName.toLowerCase().indexOf(input) != -1 && filteringTags.indexOf(tag.tagName) == -1;
+                return filterByName(tag.tagName, input) && filteringTags.indexOf(tag.tagName) == -1;
             })
             foundTags = foundTags.slice(0, 4);
             let newSuggTags = [];
-            foundTags.map((obj, index) => {
+            foundTags.forEach((obj, index) => {
                 newSuggTags.push(<div className="autoCompleteElement" onMouseDown={() => { addTag(obj.tagName); }} key={obj.tagName}>{obj.tagName}</div>);
             });
-            setSuggestedTags(newSuggTags.slice());
+            setSuggestedTags(newSuggTags);
             toggleAutoCompleteBox(true);
         }
+    }
+
+    const filterByName = (name, input) => {
+        return name.toLowerCase().split(' ').filter((word) => { return word.startsWith(input); }).length;
     }
 
     const toggleAutoCompleteBox = (show) => {
@@ -73,7 +77,7 @@ const RelicsFilters = ({
                     return rel.tags.some((tag) => {
                         return tag.relicTagName == filTag;
                     })
-                }) && rel.descriptions[0].name.toLowerCase().indexOf(typedName) != -1;
+                }) && filterByName(rel.descriptions[0].name, typedName);
             }))
             var tempSet = new Set(filteredArray);
             filteredArray = Array.from(tempSet);
@@ -83,7 +87,7 @@ const RelicsFilters = ({
 
     const renderTags = () => {
         let toRender = [];
-        filteringTags.map((obj, index) => {
+        filteringTags.forEach((obj, index) => {
             toRender.push(<div key={index}>{obj}<span key={index} onClick={() => { removeTag(index); }}> ✖</span></div>);
         })
         return toRender;

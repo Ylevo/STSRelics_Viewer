@@ -84,7 +84,6 @@ const RelicsPage = (props) => {
     
     return (
         <>
-
             {isLoading ? <LoadingSpinner /> : 
                 <>
                     <RelicsFilters relics={relics} tags={tags} languages={languages} setRelicsView={setRelicsView} relicsDescriptionsLanguage={relicsDescriptionsLanguage}
@@ -93,10 +92,6 @@ const RelicsPage = (props) => {
                     { descBoxHtml() }
                 </>
             }
-            
-            
-            
-            
         </>
     );
 }
